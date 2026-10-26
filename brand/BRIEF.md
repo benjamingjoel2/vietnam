@@ -1,3 +1,5 @@
+> **Brand name changed to Dragon Bay Travel** (was Limestone). The owner chose travel-company names. Use Dragon Bay Travel everywhere; the build prompt is brand/PROMPT.md.
+
 # Brand brief: Limestone (Vietnam)
 
 Slug and repo: `vietnam`. Country: Vietnam (VN). Brand type: country. Brief v1, 2026-10-26. Facts below were checked on that date. Anything marked *verify* needs an official source before launch.
