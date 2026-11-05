@@ -92,8 +92,8 @@ function karstSvg(seed, n, minH, maxH, fill, mist) {
 }
 // Layers: [seed, towers, minH, maxH, colour, mist, speed]
 const HOME_LAYERS = [
-  [11, 9, 150, 360, '#E4E8E3', [0.42, 0.04], 0.34],
-  [23, 8, 120, 300, '#A9BBB4', [0.55, 0.12], 0.24],
+  [11, 9, 150, 360, '#E4E8E3', [0.2, 0], 0.34],
+  [23, 8, 120, 300, '#A9BBB4', [0.34, 0.06], 0.24],
   [37, 7, 90, 250, '#3B5A53', [0.9, 0.55], 0.13],
   [41, 6, 50, 190, '#17201E', [1, 0.96], 0.04],
 ];
@@ -250,7 +250,7 @@ function weatherStrip(L, c, { dark = true, id = 'when-to-go' } = {}) {
   const w = c.weather, M = c.ui.monthsShort;
   const labels = [w.poor, w.mixed, w.good];
   const data = { labels, regions: D.weather.map((r) => ({ name: w.regionShort[r.key], m: r.m, notes: w.notes[r.key] })) };
-  return `<section class="sec ${dark ? 'dark' : ''} wx" id="${id}" data-wx='${esc(JSON.stringify(data))}' aria-labelledby="${id}-h">
+  return `<section class="sec ${dark ? 'dark' : ''} wx" id="${id}" data-wx="${esc(JSON.stringify(data))}" aria-labelledby="${id}-h">
   <div class="wrap">
     <div class="wx__head"><div>${eyebrow(esc(w.eyebrow))}<h2 class="h2" id="${id}-h">${w.title}</h2></div><p class="lede muted">${esc(w.lede)}</p></div>
     <div class="wx__months" role="group" aria-label="${esc(w.pick)}">${c.ui.months.map((m, i) => `<button type="button" aria-pressed="false" title="${esc(m)}">${esc(M[i])}</button>`).join('')}</div>
@@ -275,7 +275,7 @@ function baysChooser(L, c) {
   const scores = Object.fromEntries(D.bays.map((x) => [x.key, x.scores]));
   const q = (name, legend, opts) => `<fieldset><legend>${esc(legend)}</legend><div class="chips">${Object.entries(opts).map(([v, l]) => `<label class="chip"><input type="radio" name="${name}" value="${v}"><span>${esc(l)}</span></label>`).join('')}</div></fieldset>`;
   const meter = (n) => `<span class="meter" aria-hidden="true">${[1, 2, 3].map((i) => `<i${i <= n ? ' class="on"' : ''}></i>`).join('')}</span>`;
-  return `<section class="sec bays" id="which-bay" data-bays='${esc(JSON.stringify(scores))}' aria-labelledby="bays-h">
+  return `<section class="sec bays" id="which-bay" data-bays="${esc(JSON.stringify(scores))}" aria-labelledby="bays-h">
   <div class="wrap">
     <div class="shead"><div>${eyebrow(esc(b.eyebrow))}<h2 class="h2" id="bays-h">${b.title}</h2></div><p class="lede muted">${esc(b.lede)}</p></div>
     <form class="bays__q" onsubmit="return false">${q('p', b.q1, b.q1a)}${q('t', b.q2, b.q2a)}${q('w', b.q3, b.q3a)}
@@ -305,7 +305,7 @@ function caveLadder(L, c) {
   return `<section class="sec dark" id="cave-ladder" aria-labelledby="ladder-h">
   <div class="wrap">
     <div class="shead"><div>${eyebrow(esc(k.eyebrow))}<h2 class="h2" id="ladder-h">${k.title}</h2></div><p class="lede muted">${esc(k.lede)}</p></div>
-    <div class="ladder" data-ladder='${esc(JSON.stringify(lad))}'>
+    <div class="ladder" data-ladder="${esc(JSON.stringify(lad))}">
       <form class="ladder__ctl" onsubmit="return false">
         <div><label class="mono" for="cl-days" style="display:block;margin-bottom:10px">${esc(k.daysLabel)}</label><div style="display:flex;align-items:center;gap:18px"><output class="range-out" for="cl-days">2</output><input class="range" id="cl-days" name="days" type="range" min="1" max="5" step="1" value="2"></div></div>
         <fieldset><legend>${esc(k.fitLabel)}</legend><div class="chips">${k.fit.map((f, i) => `<label class="chip"><input type="radio" name="fit" value="${i + 1}"${i === 1 ? ' checked' : ''}><span>${esc(f)}</span></label>`).join('')}</div></fieldset>
@@ -444,7 +444,7 @@ ${weatherStrip(L, c)}`;
 function destPage(L, c, d, i) {
   const t = c.dest[d.key], ui = c.ui;
   const imgs = d.img;
-  const xpSlots = [imgs[1], imgs[2], imgs[3] || imgs[0]];
+  const xpSlots = d.xp || [imgs[1], imgs[2], imgs[3] || imgs[0]];
   const nxt = D.destinations[(i + 1) % D.destinations.length];
   const staysHere = D.stays.filter((s) => s.dest === d.key);
   const jrs = D.journeys.filter((j) => j.route.includes(d.key));
@@ -607,7 +607,7 @@ function legalPage(L, c, key, p) {
 }
 function creditsPage(L, c) {
   const t = c.credits;
-  const used = MANIFEST.filter((m) => IMG[m.slot]);
+  const used = MANIFEST.filter((m) => IMG[m.slot] && m.credit !== false);
   const body = `<div class="phead"><p class="eyebrow">${ICON.lotus}${esc(t.eyebrow)}</p><h1 class="h1">${esc(t.title)}</h1><p class="lede muted" style="margin-top:1.5rem">${esc(t.lede)}</p></div>
 <section class="wrap" style="padding-bottom:var(--space-m)"><ul class="credits" style="border-top:1px solid rgba(29,31,28,.2)">${used.map((m) => `<li><span>${esc(alt(c, m.slot))}</span><span>“${esc(m.title)}” ${esc(t.by)} ${esc(m.author)}</span><span>${m.licenseUrl ? `<a href="${esc(m.licenseUrl)}" rel="license noopener">${esc(m.license)}</a>` : esc(m.license)}</span><span><a href="${esc(m.source)}" rel="noopener">Wikimedia Commons</a></span></li>`).join('')}</ul></section>`;
   return page(L, c, { path: '/credits/', meta: c.meta.credits, body, cta: false });

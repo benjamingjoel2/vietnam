@@ -3,18 +3,18 @@
 
 // Destinations, north to south. `wx` points at a weather region below.
 const destinations = [
-  { key: 'hanoi', slug: 'hanoi', img: ['hanoi-1', 'hanoi-2', 'hanoi-3'], coords: "21°02'N 105°51'E", wx: 'delta' },
-  { key: 'halong', slug: 'ha-long-lan-ha-bay', img: ['halong-1', 'halong-2', 'halong-3', 'halong-4'], coords: "20°54'N 107°11'E", wx: 'delta' },
-  { key: 'ninhbinh', slug: 'ninh-binh', img: ['ninhbinh-1', 'ninhbinh-2', 'ninhbinh-3'], coords: "20°15'N 105°54'E", wx: 'delta' },
-  { key: 'sapa', slug: 'sapa', img: ['sapa-1', 'sapa-2', 'sapa-3'], coords: "22°20'N 103°50'E", wx: 'mountains' },
+  { key: 'hanoi', slug: 'hanoi', img: ['hanoi-2', 'hanoi-1', 'hanoi-3'], xp: ['hanoi-1', 'hanoi-2', 'hanoi-3'], coords: "21°02'N 105°51'E", wx: 'delta' },
+  { key: 'halong', slug: 'ha-long-lan-ha-bay', img: ['halong-1', 'halong-2', 'halong-3', 'halong-4'], xp: ['halong-2', 'halong-4', 'halong-3'], coords: "20°54'N 107°11'E", wx: 'delta' },
+  { key: 'ninhbinh', slug: 'ninh-binh', img: ['about-1', 'ninhbinh-1', 'ninhbinh-2', 'ninhbinh-3'], coords: "20°15'N 105°54'E", wx: 'delta' },
+  { key: 'sapa', slug: 'sapa', img: ['sapa-1', 'sapa-2', 'sapa-3'], xp: ['sapa-3', 'sapa-2', 'sapa-1'], coords: "22°20'N 103°50'E", wx: 'mountains' },
   { key: 'hagiang', slug: 'ha-giang', img: ['hagiang-1', 'hagiang-2', 'hagiang-3'], coords: "23°15'N 105°24'E", wx: 'mountains' },
-  { key: 'phongnha', slug: 'phong-nha', img: ['phongnha-1', 'phongnha-2', 'phongnha-3', 'phongnha-4'], coords: "17°35'N 106°17'E", wx: 'phongnha' },
-  { key: 'hue', slug: 'hue', img: ['hue-1', 'hue-2', 'hue-3'], coords: "16°28'N 107°35'E", wx: 'centre' },
-  { key: 'hoian', slug: 'hoi-an', img: ['hoian-1', 'hoian-2', 'hoian-3'], coords: "15°53'N 108°20'E", wx: 'centre' },
-  { key: 'danang', slug: 'da-nang', img: ['danang-1', 'danang-2', 'danang-3'], coords: "16°03'N 108°13'E", wx: 'centre' },
-  { key: 'hcmc', slug: 'ho-chi-minh-city', img: ['hcmc-1', 'hcmc-2', 'hcmc-3'], coords: "10°46'N 106°42'E", wx: 'south' },
-  { key: 'mekong', slug: 'mekong-delta', img: ['mekong-1', 'mekong-2', 'mekong-3'], coords: "10°02'N 105°47'E", wx: 'south' },
-  { key: 'phuquoc', slug: 'phu-quoc', img: ['phuquoc-1', 'phuquoc-2', 'phuquoc-3'], coords: "10°13'N 103°57'E", wx: 'island' },
+  { key: 'phongnha', slug: 'phong-nha', img: ['phongnha-2', 'phongnha-1', 'phongnha-5', 'phongnha-4'], coords: "17°35'N 106°17'E", wx: 'phongnha' },
+  { key: 'hue', slug: 'hue', img: ['hue-1', 'hue-2', 'hue-3'], xp: ['hue-2', 'hue-1', 'hue-3'], coords: "16°28'N 107°35'E", wx: 'centre' },
+  { key: 'hoian', slug: 'hoi-an', img: ['hoian-1', 'hoian-2', 'hoian-3'], xp: ['stays-1', 'hoian-2', 'hoian-3'], coords: "15°53'N 108°20'E", wx: 'centre' },
+  { key: 'danang', slug: 'da-nang', img: ['danang-2', 'danang-1', 'danang-3'], coords: "16°03'N 108°13'E", wx: 'centre' },
+  { key: 'hcmc', slug: 'ho-chi-minh-city', img: ['hcmc-1', 'hcmc-2', 'hcmc-3'], xp: ['hcmc-3', 'hcmc-1', 'hcmc-2'], coords: "10°46'N 106°42'E", wx: 'south' },
+  { key: 'mekong', slug: 'mekong-delta', img: ['mekong-1', 'mekong-2', 'mekong-3'], xp: ['mekong-1', 'mekong-2', 'mekong-3'], coords: "10°02'N 105°47'E", wx: 'south' },
+  { key: 'phuquoc', slug: 'phu-quoc', img: ['phuquoc-1', 'phuquoc-2', 'phuquoc-3'], xp: ['phuquoc-2', 'phuquoc-1', 'phuquoc-3'], coords: "10°13'N 103°57'E", wx: 'island' },
 ];
 
 // Month-by-month travel conditions, north to south.
@@ -43,7 +43,7 @@ const caves = [
   { key: 'darkcave', days: 0.5, fit: 2, swim: true, img: 'phongnha-4' },
   { key: 'hangtien', days: 1, fit: 2, swim: false, img: 'phongnha-4' },
   { key: 'tulan', days: 2, fit: 3, swim: true, img: 'phongnha-4' },
-  { key: 'hangen', days: 2, fit: 3, swim: false, img: 'phongnha-4' },
+  { key: 'hangen', days: 2, fit: 3, swim: false, img: 'phongnha-5' },
   { key: 'sondoong', days: 4, fit: 4, swim: true, img: 'phongnha-3' },
 ];
 

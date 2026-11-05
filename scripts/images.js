@@ -12,7 +12,7 @@ const outDir = path.join(root, 'assets/img');
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'images/manifest.json'), 'utf8'));
 
 // Large widths only for images used full-bleed.
-const HERO = new Set(['home-hero', 'hanoi-1', 'halong-1', 'ninhbinh-1', 'sapa-1', 'hagiang-1', 'phongnha-1', 'hue-1', 'hoian-1', 'danang-1', 'hcmc-1', 'mekong-1', 'phuquoc-1', 'about-1', 'mekong-2', 'halong-2', 'phongnha-3']);
+const HERO = new Set(['home-hero', 'hanoi-2', 'halong-1', 'about-1', 'sapa-1', 'hagiang-1', 'phongnha-2', 'hue-1', 'hoian-1', 'danang-2', 'hcmc-1', 'mekong-1', 'phuquoc-1', 'mekong-2', 'halong-2', 'phongnha-3', 'phongnha-1', 'ninhbinh-1', 'ninhbinh-2', 'halong-3', 'stays-1']);
 const WIDTHS = [480, 800, 1200, 1600];
 const HERO_WIDTHS = [480, 800, 1200, 1600, 2400];
 

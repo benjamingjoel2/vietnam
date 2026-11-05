@@ -184,7 +184,7 @@ body.menu-open { overflow: hidden; }
 .hero__copy { position: absolute; left: var(--g); right: var(--g); top: calc(var(--hdr) + clamp(48px, 12vh, 150px)); max-width: 36rem; }
 .hero__copy .eyebrow { color: #F2F0EB; }
 .hero__title { font-size: clamp(1.75rem, 3.3vw, 3rem); line-height: 1.08; letter-spacing: -.018em; text-shadow: 0 1px 24px rgba(0, 0, 0, .25); }
-.hero__word { position: absolute; left: calc(var(--g) - .04em); right: 0; bottom: .02em; margin: 0; font: 400 var(--t-xxl)/.8 var(--serif); letter-spacing: -.045em; white-space: nowrap; color: #fff; pointer-events: none; }
+.hero__word { position: absolute; left: calc(var(--g) - .04em); right: 0; bottom: .14em; margin: 0; font: 400 var(--t-xxl)/.8 var(--serif); letter-spacing: -.045em; white-space: nowrap; color: #fff; pointer-events: none; }
 .hero__word--sm { font-size: clamp(3.5rem, 13vw, 14rem); }
 .hero__card { position: absolute; right: var(--g); top: 50%; width: min(330px, calc(100% - 2 * var(--g))); display: none; }
 .hero__card .row { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid rgba(255, 255, 255, .45); }
@@ -214,7 +214,7 @@ body.menu-open { overflow: hidden; }
 .phero .hero__media { inset: -4% 0 0; }
 .phero__copy { position: absolute; left: var(--g); right: var(--g); top: calc(var(--hdr) + clamp(36px, 9vh, 110px)); max-width: 34rem; }
 .phero__copy p { font-size: clamp(1.0625rem, 1.4vw, 1.25rem); line-height: 1.45; text-shadow: 0 1px 18px rgba(0, 0, 0, .35); }
-.phero .hero__word { font-size: clamp(3.75rem, 15vw, 16rem); bottom: .03em; }
+.phero .hero__word { font-size: clamp(3.75rem, 15vw, 16rem); bottom: .14em; }
 .phero .hero__word.is-long { font-size: clamp(3rem, 10.5vw, 11.5rem); white-space: normal; line-height: .88; }
 
 /* simple page head (no photo) */
