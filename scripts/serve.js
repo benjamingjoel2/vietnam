@@ -7,7 +7,7 @@ const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 
 const port = +process.env.PORT || 3000;
 http.createServer((req, res) => {
   const url = new URL(req.url, 'http://x');
-  if (url.pathname === '/api/enquiry') return enquiry(req, res);
+  if (url.pathname.replace(/\/$/, '') === '/api/enquiry') return enquiry(req, res);
   let p = decodeURIComponent(url.pathname);
   if (!path.extname(p) && !p.endsWith('/')) { res.writeHead(308, { Location: p + '/' + url.search }); return res.end(); }
   let file = path.join(dist, p.endsWith('/') ? p + 'index.html' : p);

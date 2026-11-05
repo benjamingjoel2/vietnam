@@ -565,7 +565,7 @@ function enquirePage(L, c) {
   const body = `<div class="phead phead--split"><div>${eyebrow(esc(f.eyebrow))}<h1 class="h1">${f.title}</h1></div><p class="lede muted">${esc(f.lede)}</p></div>
 <section class="wrap" style="padding-bottom:var(--space-m)"><div class="form">
   <aside class="form__aside"><h2 class="h3">${esc(f.asideTitle)}</h2><ol>${f.aside.map((x) => `<li>${esc(x)}</li>`).join('')}</ol><p class="small muted">${esc(f.emailInstead)} <a class="lnk-inline" href="mailto:${cfg.email}">${cfg.email}</a></p></aside>
-  <form class="form__main" id="enquiry" action="/api/enquiry" method="post" novalidate data-thanks="${u(L, '/enquire/thanks/')}" data-sending="${esc(f.sending)}" data-err-required="${esc(f.errorRequired)}" data-err-email="${esc(f.errorEmail)}" data-err-consent="${esc(f.errorConsent)}" data-err-server="${esc(f.errorServer)}" data-pre-cave="${esc(f.prefillCave)}" data-pre-bay="${esc(f.prefillBay)}" data-pre-journey="${esc(f.prefillJourney)}">
+  <form class="form__main" id="enquiry" action="/api/enquiry/" method="post" novalidate data-thanks="${u(L, '/enquire/thanks/')}" data-sending="${esc(f.sending)}" data-err-required="${esc(f.errorRequired)}" data-err-email="${esc(f.errorEmail)}" data-err-consent="${esc(f.errorConsent)}" data-err-server="${esc(f.errorServer)}" data-pre-cave="${esc(f.prefillCave)}" data-pre-bay="${esc(f.prefillBay)}" data-pre-journey="${esc(f.prefillJourney)}">
     <input type="hidden" name="lang" value="${L.code}">
     <div class="hp" aria-hidden="true"><label for="f-website">Website</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
     <fieldset class="fgroup"><legend class="mono">${esc(f.sectionYou)}</legend>

@@ -72,7 +72,7 @@ This writes responsive AVIF/WebP files (480 to 2400 px wide) with content-hashed
 
 ## Enquiry form
 
-The form posts to `/api/enquiry` (works without JavaScript; with JavaScript it validates inline and sends with `fetch`). The function validates the fields, drops spam caught by a honeypot, and writes every enquiry to the Vercel function log.
+The form posts to `/api/enquiry/` (works without JavaScript; with JavaScript it validates inline and sends with `fetch`). The function validates the fields, drops spam caught by a honeypot, and writes every enquiry to the Vercel function log.
 
 To have enquiries **emailed** to dragonbaytravel@tourground.com, add these environment variables in the Vercel project and redeploy:
 
