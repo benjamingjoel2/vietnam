@@ -1,0 +1,19 @@
+{
+  "name": "dragon-bay-travel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dragon Bay Travel: static multilingual site for slow travel in Vietnam",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "images": "node scripts/images.js",
+    "fonts": "node scripts/fonts.js",
+    "serve": "node scripts/serve.js",
+    "check": "node scripts/check.js"
+  },
+  "engines": { "node": ">=18" },
+  "devDependencies": {
+    "@fontsource/literata": "^5.0.0",
+    "@fontsource/work-sans": "^5.0.0",
+    "sharp": "^0.33.5"
+  }
+}
