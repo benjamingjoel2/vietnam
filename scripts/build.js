@@ -119,7 +119,7 @@ const preloadFor = (slot, sizes) => {
 const tokens = Object.entries(cfg.palette).map(([k, v]) => `--c-${k}:${v}`).join(';');
 const CSS = `:root{${tokens}}` + fs.readFileSync(path.join(root, 'src/styles.css'), 'utf8')
   .replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n\s*/g, '').replace(/\s*([{}:;,>])\s*/g, '$1').replace(/;}/g, '}');
-const JS = fs.readFileSync(path.join(root, 'src/main.js'), 'utf8');
+const JS = fs.readFileSync(path.join(root, 'src/main.js'), 'utf8').split('\n').map((l) => l.trim()).filter((l) => l && !l.startsWith('//')).join('\n');
 const jsHash = crypto.createHash('sha1').update(JS).digest('hex').slice(0, 10);
 const JS_URL = `/assets/js/main.${jsHash}.js`;
 
@@ -253,7 +253,7 @@ function weatherStrip(L, c, { dark = true, id = 'when-to-go' } = {}) {
   return `<section class="sec ${dark ? 'dark' : ''} wx" id="${id}" data-wx='${esc(JSON.stringify(data))}' aria-labelledby="${id}-h">
   <div class="wrap">
     <div class="wx__head"><div>${eyebrow(esc(w.eyebrow))}<h2 class="h2" id="${id}-h">${w.title}</h2></div><p class="lede muted">${esc(w.lede)}</p></div>
-    <div class="wx__months" role="group" aria-label="${esc(w.pick)}">${c.ui.months.map((m, i) => `<button type="button" aria-pressed="false" aria-label="${esc(m)}">${esc(M[i])}</button>`).join('')}</div>
+    <div class="wx__months" role="group" aria-label="${esc(w.pick)}">${c.ui.months.map((m, i) => `<button type="button" aria-pressed="false" title="${esc(m)}">${esc(M[i])}</button>`).join('')}</div>
     <table>
       <caption class="sr">${esc(w.caption)}</caption>
       <thead><tr><th scope="col" style="width:22%"><span class="sr">${esc(c.ui.north)} → ${esc(c.ui.south)}</span></th>${M.map((m, i) => `<th scope="col" data-m="${i}">${esc(m)}</th>`).join('')}</tr></thead>
@@ -464,7 +464,7 @@ function destPage(L, c, d, i) {
     <div class="dsplit__a rv">${eyebrow(`${String(i + 1).padStart(2, '0')} · ${esc(t.name)}`)}
       <dl class="facts"><div><dt>${esc(ui.bestMonths)}</dt><dd>${esc(t.best)}</dd></div><div><dt>${esc(ui.suggestedNights)}</dt><dd>${esc(t.nights)}</dd></div><div><dt>${esc(ui.gettingThere)}</dt><dd>${esc(t.access)}</dd></div><div><dt>${esc(ui.pace)}</dt><dd>${esc(t.pace)}</dd></div></dl>
     </div>
-    <div class="dsplit__b"><p class="stmt rv">${esc(t.intro)}</p>
+    <div class="dsplit__b"><p class="stmt stmt--m rv">${esc(t.intro)}</p>
       <div class="rv" style="margin-top:48px"><p class="mono muted" style="margin-bottom:12px">${esc(ui.whenToGo)} · ${esc(c.weather.regions[d.wx])}</p>${wxMini(c, d.wx)}<p class="small muted" style="margin-top:10px"><a class="lnk-inline" href="${u(L, '/journeys/')}#when-to-go">${esc(c.weather.title.replace(/<[^>]+>/g, ''))}</a></p></div>
     </div>
   </div>
