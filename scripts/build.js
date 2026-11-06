@@ -132,17 +132,16 @@ function header(L, c, pagePath) {
   return `<a class="skip" href="#main">${esc(t.skip)}</a>
 <header class="hdr">
   <div class="hdr__l">
-    <a class="pill" href="${u(L, '/destinations/')}" data-menu-open><span class="burger" aria-hidden="true"></span><span>${esc(t.menu)}</span></a>
-    <a class="pill nav-pill" href="${u(L, '/journeys/')}"${pagePath === '/journeys/' ? ' aria-current="page"' : ''}>${esc(t.navJourneys)}</a>
-    <a class="pill nav-pill nav-pill--x" href="${u(L, '/stays/')}"${pagePath === '/stays/' ? ' aria-current="page"' : ''}>${esc(t.navStays)}</a>
+    <a class="nav-link" href="${u(L, '/destinations/')}" data-menu-open><span class="burger" aria-hidden="true"></span><span>${esc(t.menu)}</span></a>
+    <a class="nav-link nav-pill" href="${u(L, '/journeys/')}"${pagePath === '/journeys/' ? ' aria-current="page"' : ''}>${esc(t.navJourneys)}</a>
+    <a class="nav-link nav-pill nav-pill--x" href="${u(L, '/stays/')}"${pagePath === '/stays/' ? ' aria-current="page"' : ''}>${esc(t.navStays)}</a>
   </div>
   <a class="brand" href="${u(L, '/')}" aria-label="${esc(cfg.brand.name)}, ${esc(t.home)}">${ICON.lotus}<span class="brand__full">${esc(cfg.brand.name)}</span><span class="brand__short">${esc(cfg.brand.short)}</span></a>
   <div class="hdr__r">
     <nav class="langs" aria-label="${esc(t.language)}">${langLinks(L, pagePath)}</nav>
-    <a class="pill pill--accent" href="${u(L, '/enquire/')}">${ICON.lotus.replace('class="mk"', 'class="mk" style="color:#fff"')}<span class="lbl">${esc(t.enquire)}</span></a>
+    <a class="btn hdr__cta" href="${u(L, '/enquire/')}">${esc(t.enquire)}</a>
   </div>
-</header>
-<a class="sidetab" href="${u(L, '/enquire/')}">${esc(c.home.heroCta)} +</a>`;
+</header>`;
 }
 function menu(L, c, pagePath) {
   const t = c.ui;
@@ -171,24 +170,21 @@ function menu(L, c, pagePath) {
   </div>
 </div>`;
 }
-function footer(L, c, pagePath, { cta = true } = {}) {
+function footer(L, c, pagePath) {
   const t = c.ui;
   const dl = (k) => `<li><a href="${u(L, dpath(k))}">${esc(c.dest[k].name)}</a></li>`;
+  const a = cfg.address;
   return `<footer class="ftr dark">
-  ${cta ? `<div class="ftr__cta"><div><p class="eyebrow">${ICON.lotus}${esc(t.writeTo)}</p><h2 class="h2">${t.footerCta}</h2></div><div><p>${esc(t.footerCtaText)}</p><a class="btn" href="${u(L, '/enquire/')}">${esc(t.enquire)} ${ICON.ar}</a></div></div>` : ''}
+  <div class="ftr__panel"><div><p class="eyebrow">${esc(t.writeTo)}</p><h2 class="h2">${t.footerCta}</h2></div><div><p>${esc(t.footerCtaText)}</p><a class="btn btn--light" href="${u(L, '/enquire/')}">${esc(t.enquire)} ${ICON.ar}</a></div></div>
   <div class="ftr__cols">
-    <div class="ftr__lead"><p>${esc(t.footerLead)}</p><nav class="langs" aria-label="${esc(t.language)}">${langLinks(L, pagePath)}</nav></div>
-    <div class="ftr__c1"><h2>${esc(t.footerExplore)}</h2><ul>${D.destinations.slice(0, 6).map((d) => dl(d.key)).join('')}</ul></div>
-    <div class="ftr__c2"><h2 class="sr">${esc(t.footerExplore)}</h2><ul style="padding-top:calc(.6875rem*1.4 + 14px)">${D.destinations.slice(6).map((d) => dl(d.key)).join('')}</ul></div>
-    <div class="ftr__c3"><h2>${esc(t.footerCompany)}</h2><ul>
-      <li><a href="${u(L, '/journeys/')}">${esc(t.navJourneys)}</a></li><li><a href="${u(L, '/stays/')}">${esc(t.navStays)}</a></li><li><a href="${u(L, '/about/')}">${esc(t.navAbout)}</a></li><li><a href="${u(L, '/journal/')}">${esc(t.navJournal)}</a></li><li><a href="${u(L, '/enquire/')}">${esc(t.enquire)}</a></li></ul>
-      <h2 style="margin-top:28px">${esc(t.footerLegal)}</h2><ul>
-      <li><a href="${u(L, '/privacy/')}">${esc(t.privacy)}</a></li><li><a href="${u(L, '/booking-terms/')}">${esc(t.terms)}</a></li><li><a href="${u(L, '/cookies/')}">${esc(t.cookies)}</a></li><li><a href="${u(L, '/credits/')}">${esc(t.credits)}</a></li></ul></div>
-    <div class="ftr__c4"><h2>${esc(t.footerContact)}</h2><p><a href="mailto:${cfg.email}">${cfg.email}</a></p>
-      <h2 style="margin-top:28px">${esc(t.address)}</h2><address>${esc(cfg.brand.name)}<br>${esc(cfg.address.line1)}<br>${esc(cfg.address.street)}<br>${esc(cfg.address.locality)}, ${esc(cfg.address.city)} ${esc(cfg.address.postcode)}<br>${esc(cfg.address.country)}</address></div>
+    <div class="ftr__lead"><p class="ftr__brand">${esc(cfg.brand.name)}</p><p>${esc(t.footerLead)}</p><p><a href="mailto:${cfg.email}">${cfg.email}</a></p><address>${esc(a.line1)}, ${esc(a.street)}, ${esc(a.locality)}, ${esc(a.city)} ${esc(a.postcode)}, ${esc(a.country)}</address></div>
+    <nav class="ftr__c1" aria-label="${esc(t.footerExplore)}"><h2>${esc(t.footerExplore)}</h2><ul class="ftr__two">${D.destinations.map((d) => dl(d.key)).join('')}</ul></nav>
+    <nav class="ftr__c3" aria-label="${esc(t.footerCompany)}"><h2>${esc(t.footerCompany)}</h2><ul>
+      <li><a href="${u(L, '/journeys/')}">${esc(t.navJourneys)}</a></li><li><a href="${u(L, '/stays/')}">${esc(t.navStays)}</a></li><li><a href="${u(L, '/about/')}">${esc(t.navAbout)}</a></li><li><a href="${u(L, '/journal/')}">${esc(t.navJournal)}</a></li><li><a href="${u(L, '/enquire/')}">${esc(t.enquire)}</a></li></ul></nav>
+    <nav class="ftr__c4" aria-label="${esc(t.footerLegal)}"><h2>${esc(t.footerLegal)}</h2><ul>
+      <li><a href="${u(L, '/privacy/')}">${esc(t.privacy)}</a></li><li><a href="${u(L, '/booking-terms/')}">${esc(t.terms)}</a></li><li><a href="${u(L, '/cookies/')}">${esc(t.cookies)}</a></li><li><a href="${u(L, '/credits/')}">${esc(t.credits)}</a></li></ul></nav>
   </div>
-  <p class="ftr__word" aria-hidden="true">Dragon <em>Bay</em></p>
-  <div class="ftr__bot"><span>© ${YEAR} ${esc(cfg.brand.name)}. ${esc(t.rights)}</span><a href="#top">${esc(t.toTop)} ↑</a></div>
+  <div class="ftr__bot"><span>© ${YEAR} ${esc(cfg.brand.name)}. ${esc(t.rights)}</span><nav class="langs" aria-label="${esc(t.language)}">${langLinks(L, pagePath)}</nav><a href="#top">${esc(t.toTop)} ↑</a></div>
 </footer>`;
 }
 
@@ -323,13 +319,13 @@ function caveLadder(L, c) {
   </div>
 </section>`;
 }
-function destCard(L, c, d, i, sizes) {
+function destCard(L, c, d, i, sizes, eager = false) {
   const t = c.dest[d.key];
-  return `<a class="card" href="${u(L, dpath(d.key))}"><div class="card__img">${pic(d.img[0], alt(c, d.img[0]), { sizes, ratio: 1.25 })}<span class="card__num">${String(i + 1).padStart(2, '0')}</span></div><div class="card__meta"><p class="mono">${esc(t.region)} · ${esc(t.best)}</p><h3>${esc(t.name)}</h3><p>${esc(t.lede)}</p><span class="lnk">${esc(c.ui.discover)} ${ICON.ar}</span></div></a>`;
+  return `<a class="card" href="${u(L, dpath(d.key))}"><div class="card__img">${pic(d.img[0], alt(c, d.img[0]), { sizes, ratio: 1.25, eager, high: eager && i === 0 })}<span class="card__num">${String(i + 1).padStart(2, '0')}</span></div><div class="card__meta"><p class="mono">${esc(t.region)} · ${esc(t.best)}</p><h3>${esc(t.name)}</h3><p>${esc(t.lede)}</p><span class="lnk">${esc(c.ui.discover)} ${ICON.ar}</span></div></a>`;
 }
 function rail(L, c, head, items) {
   return `<div class="rail">
-  <div class="rail__head">${head}</div>
+  ${head ? `<div class="rail__head">${head}</div>` : ''}
   <div class="rail__track" tabindex="0" role="region" aria-label="${esc(c.ui.navDestinations)}">${items}</div>
   <div class="rail__foot"><div class="rail__bar" aria-hidden="true"><i></i></div><div class="rail__btns"><button type="button" aria-label="${esc(c.ui.previous)}">${ICON.arL}</button><button type="button" aria-label="${esc(c.ui.next)}">${ICON.ar}</button></div></div>
 </div>`;
@@ -362,13 +358,12 @@ const heroLines = (n = 6) => `<div class="hero__lines" aria-hidden="true">${'<i>
 function homePage(L, c) {
   const h = c.home;
   const body = `
-<section class="hero" aria-labelledby="hero-h">
-  <div class="hero__media" data-speed="0.42">${pic('home-hero', alt(c, 'home-hero'), { eager: true, high: true })}</div>
-  ${karstHome()}
-  ${heroLines(6)}
-  <div class="hero__copy"><p class="eyebrow">${ICON.lotus}${esc(h.heroEyebrow)}</p><h1 class="hero__title" id="hero-h">${esc(h.heroTitle)}</h1><a class="btn hero__cta-m" href="${u(L, '/enquire/')}">${esc(h.heroCta)} ${ICON.ar}</a></div>
-  <aside class="hero__card"><div class="row mono"><span>${esc(c.dest.halong.name)}</span><span>01 / 12</span></div><div class="bar"><i></i></div><p>${esc(h.heroCard)}</p><div class="row mono" style="border:0"><span>20°48'N 107°05'E</span></div><a class="btn" href="${u(L, '/enquire/')}">${esc(h.heroCta)} ${ICON.ar}</a></aside>
-  <p class="hero__word" aria-hidden="true">${esc(h.heroWord)}</p>
+<section class="hero6 dark" aria-labelledby="hero-h">
+  <div class="hero6__top">
+    <div><p class="eyebrow">${ICON.lotus}${esc(h.heroEyebrow)}</p><h1 class="hero6__title" id="hero-h">${esc(h.heroTitle)}</h1></div>
+    <div class="hero6__aside"><p>${esc(h.heroCard)}</p><a class="btn" href="${u(L, '/enquire/')}">${esc(h.heroCta)} ${ICON.ar}</a></div>
+  </div>
+  ${rail(L, c, '', D.destinations.map((d, i) => destCard(L, c, d, i, '(min-width:1280px) 22vw, (min-width:900px) 30vw, (min-width:600px) 44vw, 74vw', i < 4)).join(''))}
 </section>
 
 <section class="sec intro">
@@ -377,11 +372,6 @@ function homePage(L, c) {
     <p class="intro__text stmt rv">${esc(h.intro)}</p>
     <div class="stats">${h.stats.map((s) => `<div class="stat rv"><b>${esc(s.n)}</b><span>${esc(s.t)}</span></div>`).join('')}</div>
   </div>
-</section>
-
-<section class="sec" style="padding-top:0" aria-labelledby="dest-h">
-  ${rail(L, c, `${eyebrow(esc(h.destEyebrow))}<h2 class="h2" id="dest-h">${h.destTitle}</h2><p class="muted">${esc(h.destText)}</p><a class="lnk" href="${u(L, '/destinations/')}">${esc(c.ui.allDestinations)} ${ICON.ar}</a>`,
-    D.destinations.map((d, i) => destCard(L, c, d, i, '(min-width:900px) 25vw, (min-width:600px) 44vw, 74vw')).join(''))}
 </section>
 
 <section class="sec mist" aria-labelledby="bays-teaser-h">
@@ -427,8 +417,9 @@ ${weatherStrip(L, c).replace(`${esc(c.weather.eyebrow)}</p>`, `${esc(h.weatherEy
   </div>
 </section>
 
-${cta(L, c, 'mekong-2')}`;
-  return page(L, c, { path: '/', meta: c.meta.home, body, preload: preloadFor('home-hero', '100vw'), cta: false });
+`;
+  const first = D.destinations[0].img[0];
+  return page(L, c, { path: '/', meta: c.meta.home, body, preload: preloadFor(first, '(min-width:1280px) 22vw, (min-width:900px) 30vw, (min-width:600px) 44vw, 74vw') });
 }
 
 function destIndexPage(L, c) {
@@ -454,9 +445,7 @@ function destPage(L, c, d, i) {
   <div class="hero__media" data-speed="0.35">${pic(imgs[0], alt(c, imgs[0]), { eager: true, high: true })}</div>
   ${karstPage(100 + i * 7)}
   ${heroLines(6)}
-  <div class="phero__copy"><p class="eyebrow">${ICON.lotus}${esc(t.region)}</p><h1 class="sr" id="ph-h">${esc(t.name)}</h1><p>${esc(t.lede)}</p></div>
-  <p class="hero__meta mono">${String(i + 1).padStart(2, '0')} / 12 · ${d.coords}</p>
-  <p class="hero__word${isLong ? ' is-long' : ''}" aria-hidden="true">${esc(t.name)}</p>
+  <div class="phero__copy"><p class="eyebrow">${ICON.lotus}${esc(t.region)} · <span class="mono">${d.coords}</span></p><h1 class="phero__title" id="ph-h">${esc(t.name)}</h1><p>${esc(t.lede)}</p></div>
 </section>
 
 <section class="sec">
