@@ -52,7 +52,7 @@ The build itself (`scripts/build.js`) uses only Node's standard library. `npm in
 
 **Copy.** Change the string in `content/en.js`, then the same key in the other three language files. Keep the `{{brand}}`, `{{email}}`, `{{address}}`, `{{site}}` and `{{privacy}}` tokens; they are filled in from the config at build time. Rebuild.
 
-**Re-branding.** Edit `config/site.config.js` (name, email, address, domain, colours) and rebuild. The giant footer wordmark and the hero word are in `scripts/build.js` (`ftr__word`) and `content/*.js` (`home.heroWord`).
+**Re-branding.** Edit `config/site.config.js` (name, email, address, domain, colours) and rebuild. The footer and the home hero (a headline over a scrollable row of destination cards) are in `scripts/build.js` (`footer`, `homePage`).
 
 **Weather strip.** Ratings are in `data/site-data.js` → `weather` (2 good, 1 mixed, 0 avoid, January first). Month notes are in `content/*.js` → `weather.notes`.
 
