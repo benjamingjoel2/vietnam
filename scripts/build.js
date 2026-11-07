@@ -358,12 +358,13 @@ const heroLines = (n = 6) => `<div class="hero__lines" aria-hidden="true">${'<i>
 function homePage(L, c) {
   const h = c.home;
   const body = `
-<section class="hero6 dark" aria-labelledby="hero-h">
-  <div class="hero6__top">
-    <div><p class="eyebrow">${ICON.lotus}${esc(h.heroEyebrow)}</p><h1 class="hero6__title" id="hero-h">${esc(h.heroTitle)}</h1></div>
-    <div class="hero6__aside"><p>${esc(h.heroCard)}</p><a class="btn" href="${u(L, '/enquire/')}">${esc(h.heroCta)} ${ICON.ar}</a></div>
-  </div>
-  ${rail(L, c, '', D.destinations.map((d, i) => destCard(L, c, d, i, '(min-width:1280px) 22vw, (min-width:900px) 30vw, (min-width:600px) 44vw, 74vw', i < 4)).join(''))}
+<section class="hero" aria-labelledby="hero-h">
+  <div class="hero__media" data-speed="0.42">${pic('home-hero', alt(c, 'home-hero'), { eager: true, high: true })}</div>
+  ${karstHome()}
+  ${heroLines(6)}
+  <div class="hero__copy"><p class="eyebrow">${ICON.lotus}${esc(h.heroEyebrow)}</p><h1 class="hero__title" id="hero-h">${esc(h.heroTitle)}</h1><a class="btn hero__cta-m" href="${u(L, '/enquire/')}">${esc(h.heroCta)} ${ICON.ar}</a></div>
+  <aside class="hero__card"><div class="row mono"><span>${esc(c.dest.halong.name)}</span><span>01 / 12</span></div><div class="bar"><i></i></div><p>${esc(h.heroCard)}</p><div class="row mono" style="border:0"><span>20°48'N 107°05'E</span></div><a class="btn" href="${u(L, '/enquire/')}">${esc(h.heroCta)} ${ICON.ar}</a></aside>
+  <p class="hero__word" aria-hidden="true">${esc(h.heroWord)}</p>
 </section>
 
 <section class="sec intro">
@@ -372,6 +373,11 @@ function homePage(L, c) {
     <p class="intro__text stmt rv">${esc(h.intro)}</p>
     <div class="stats">${h.stats.map((s) => `<div class="stat rv"><b>${esc(s.n)}</b><span>${esc(s.t)}</span></div>`).join('')}</div>
   </div>
+</section>
+
+<section class="sec" style="padding-top:0" aria-labelledby="dest-h">
+  ${rail(L, c, `${eyebrow(esc(h.destEyebrow))}<h2 class="h2" id="dest-h">${h.destTitle}</h2><p class="muted">${esc(h.destText)}</p><a class="lnk" href="${u(L, '/destinations/')}">${esc(c.ui.allDestinations)} ${ICON.ar}</a>`,
+    D.destinations.map((d, i) => destCard(L, c, d, i, '(min-width:900px) 25vw, (min-width:600px) 44vw, 74vw')).join(''))}
 </section>
 
 <section class="sec mist" aria-labelledby="bays-teaser-h">
@@ -418,8 +424,7 @@ ${weatherStrip(L, c).replace(`${esc(c.weather.eyebrow)}</p>`, `${esc(h.weatherEy
 </section>
 
 `;
-  const first = D.destinations[0].img[0];
-  return page(L, c, { path: '/', meta: c.meta.home, body, preload: preloadFor(first, '(min-width:1280px) 22vw, (min-width:900px) 30vw, (min-width:600px) 44vw, 74vw') });
+  return page(L, c, { path: '/', meta: c.meta.home, body, preload: preloadFor('home-hero', '100vw') });
 }
 
 function destIndexPage(L, c) {
@@ -445,7 +450,9 @@ function destPage(L, c, d, i) {
   <div class="hero__media" data-speed="0.35">${pic(imgs[0], alt(c, imgs[0]), { eager: true, high: true })}</div>
   ${karstPage(100 + i * 7)}
   ${heroLines(6)}
-  <div class="phero__copy"><p class="eyebrow">${ICON.lotus}${esc(t.region)} · <span class="mono">${d.coords}</span></p><h1 class="phero__title" id="ph-h">${esc(t.name)}</h1><p>${esc(t.lede)}</p></div>
+  <div class="phero__copy"><p class="eyebrow">${ICON.lotus}${esc(t.region)}</p><h1 class="sr" id="ph-h">${esc(t.name)}</h1><p>${esc(t.lede)}</p></div>
+  <p class="hero__meta mono">${String(i + 1).padStart(2, '0')} / 12 · ${d.coords}</p>
+  <p class="hero__word${isLong ? ' is-long' : ''}" aria-hidden="true">${esc(t.name)}</p>
 </section>
 
 <section class="sec">

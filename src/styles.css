@@ -181,6 +181,8 @@ body.menu-open { overflow: hidden; }
 .hero__copy { position: absolute; left: var(--g); right: var(--g); top: calc(var(--hdr) + clamp(48px, 12vh, 150px)); max-width: 36rem; }
 .hero__copy .eyebrow { color: #F2F0EB; }
 .hero__title { font-size: clamp(1.75rem, 3.3vw, 3rem); line-height: 1.08; letter-spacing: -.018em; text-shadow: 0 1px 24px rgba(0, 0, 0, .25); }
+.hero__word { position: absolute; left: calc(var(--g) - .04em); right: 0; bottom: .14em; margin: 0; font: 400 var(--t-xxl)/.8 var(--serif); letter-spacing: -.045em; white-space: nowrap; color: #fff; pointer-events: none; }
+.hero__word--sm { font-size: clamp(3.5rem, 13vw, 14rem); }
 .hero__card { position: absolute; right: var(--g); top: 50%; width: min(330px, calc(100% - 2 * var(--g))); display: none; }
 .hero__card .row { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid rgba(255, 255, 255, .45); }
 .hero__card p { font-size: .9375rem; line-height: 1.5; margin: 12px 0 18px; text-shadow: 0 1px 14px rgba(0, 0, 0, .35); }
@@ -204,33 +206,14 @@ body.menu-open { overflow: hidden; }
 .karst--home { height: 62%; }
 .karst--page { height: 26%; z-index: 0; }
 
-/* home hero: region carousel (H6) */
-.hero6 { background: var(--c-ink); color: var(--c-limestone); padding: calc(var(--hdr) + clamp(40px, 8vh, 96px)) 0 clamp(36px, 5vw, 64px); }
-.hero6__top { padding: 0 var(--g); display: grid; gap: 20px var(--gap); margin-bottom: clamp(32px, 4vw, 56px); }
-.hero6__title { font-size: clamp(2.25rem, 5.4vw, 5.5rem); line-height: 1.04; letter-spacing: -.022em; max-width: 13em; }
-.hero6__aside p { color: #CFCDC6; max-width: 30em; margin: 0 0 20px; }
-.hero6 .rail { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; padding-left: 0; }
-.hero6 .rail__track, .hero6 .rail__foot { grid-column: 1 / -1; }
-.hero6 .rail__track { padding-left: var(--g); scroll-padding-left: var(--g); }
-.hero6 .rail__foot { padding-left: var(--g); }
-.hero6 .card__num { display: none; }
-.hero6 .card__meta .mono { color: #B9B6AE; }
-.hero6 .card { color: inherit; }
-.hero6 .card__meta p:not(.mono) { color: #CFCDC6; }
-.hero6 .rail__bar { background: rgba(237, 235, 230, .25); }
-.hero6 .rail__bar i { background: var(--c-limestone); }
-.hero6 .rail__btns button { color: var(--c-limestone); box-shadow: inset 0 0 0 1px rgba(237, 235, 230, .45); }
-@media (min-width: 900px) { .hero6__top { grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: end; } .hero6__top > :first-child { grid-column: 1 / 9; } .hero6__aside { grid-column: 9 / -1; } .hero6 .rail__track { grid-auto-columns: 30vw; } }
-@media (min-width: 1280px) { .hero6 .rail__track { grid-auto-columns: 22vw; } }
 
 /* page hero (destinations) */
 .phero { position: relative; height: 92vh; height: 92svh; min-height: 520px; overflow: hidden; color: #fff; background: #3D4A45; isolation: isolate; }
 .phero .hero__media { inset: -4% 0 0; }
 .phero__copy { position: absolute; left: var(--g); right: var(--g); top: calc(var(--hdr) + clamp(36px, 9vh, 110px)); max-width: 34rem; }
 .phero__copy p { font-size: clamp(1.0625rem, 1.4vw, 1.25rem); line-height: 1.45; text-shadow: 0 1px 18px rgba(0, 0, 0, .35); }
-.phero__copy { top: auto; bottom: clamp(40px, 9vh, 96px); max-width: 44rem; }
-.phero__copy p.eyebrow { font-size: var(--t-eyebrow); line-height: 1.4; }
-.phero__title { font-size: clamp(2.5rem, 6vw, 5.5rem); line-height: 1.02; letter-spacing: -.025em; margin: 0 0 16px; text-shadow: 0 1px 24px rgba(0, 0, 0, .3); }
+.phero .hero__word { font-size: clamp(3.75rem, 15vw, 16rem); bottom: .14em; }
+.phero .hero__word.is-long { font-size: clamp(3rem, 10.5vw, 11.5rem); white-space: normal; line-height: .88; }
 
 /* simple page head (no photo) */
 .phead { padding: calc(var(--hdr) + clamp(56px, 10vw, 140px)) var(--g) clamp(40px, 6vw, 80px); }
@@ -640,8 +623,8 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
   .js .rv-img.is-in { clip-path: inset(0 0 0 0); }
   .js .rv-img img { transform: scale(1.08); transition: transform 1.8s var(--ease-out); }
   .js .rv-img.is-in img { transform: scale(1); }
-  .hero6__top > * { animation: rise 1.1s var(--ease-out) both; }
-  .hero6__aside { animation-delay: .2s; }
+  .hero__word, .hero__title, .hero__copy .eyebrow, .hero__card { animation: rise 1.3s var(--ease-out) both; }
+  .hero__title { animation-delay: .1s; } .hero__card { animation-delay: .35s; } .hero__word { animation-delay: .2s; }
   @keyframes rise { from { opacity: 0; transform: translateY(30px); } }
   @view-transition { navigation: auto; }
   ::view-transition-old(root) { animation: vt-out .45s var(--ease) both; }
