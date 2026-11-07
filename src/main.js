@@ -19,7 +19,7 @@
   };
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 
-  // ---- parallax: karst layers drift at their own speeds ----
+  // ---- parallax: hero photos drift at their own speeds ----
   const px = reduce ? [] : $$('[data-speed]');
   function parallax() {
     if (!px.length) return;

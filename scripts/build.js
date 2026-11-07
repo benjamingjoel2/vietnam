@@ -39,66 +39,6 @@ const ICON = {
   strata: '<svg class="strata" viewBox="0 0 160 12" preserveAspectRatio="none" aria-hidden="true"><path d="M0 1.5h160M0 5h118M0 7.2h140M0 10.5h86" stroke="currentColor" stroke-width="1" fill="none"/></svg>',
 };
 
-// Seeded random so the karst silhouettes are identical on every build.
-function rng(seed) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); }
-function smooth(pts) {
-  // Catmull-Rom through the points, as cubic Bézier segments
-  let d = `M${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
-  for (let i = 0; i < pts.length - 1; i++) {
-    const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
-    const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
-    const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
-    d += `C${c1[0].toFixed(1)} ${c1[1].toFixed(1)} ${c2[0].toFixed(1)} ${c2[1].toFixed(1)} ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
-  }
-  return d + 'Z';
-}
-function karstPath(seed, W, H, n, minH, maxH) {
-  // Limestone towers: tall, steep, undercut at the waterline, with knuckled crowns.
-  const r = rng(seed);
-  let p = '';
-  let x = -40 + r() * 60;
-  for (let i = 0; i < n * 3 && x < W + 40; i++) {
-    const h = minH + Math.pow(r(), 0.8) * (maxH - minH);
-    const w = h * (0.42 + r() * 0.5);
-    const xL = x, xR = x + w, top = H - h;
-    const pts = [
-      [xL - w * 0.02, H + 2],
-      [xL + w * 0.07, H - h * 0.05],
-      [xL - w * 0.03, H - h * (0.18 + r() * 0.1)],
-      [xL + w * (0.02 + r() * 0.06), H - h * (0.5 + r() * 0.12)],
-      [xL + w * (0.1 + r() * 0.06), H - h * (0.82 + r() * 0.06)],
-    ];
-    const bumps = 2 + Math.floor(r() * 3);
-    for (let b = 0; b < bumps; b++) {
-      const fx = 0.2 + (b + r() * 0.6) * (0.6 / bumps);
-      pts.push([xL + w * fx, top + h * (r() * 0.09)]);
-    }
-    pts.push([xR - w * (0.1 + r() * 0.06), H - h * (0.8 + r() * 0.08)]);
-    pts.push([xR - w * (0.02 + r() * 0.05), H - h * (0.48 + r() * 0.12)]);
-    pts.push([xR + w * 0.03, H - h * (0.2 + r() * 0.08)]);
-    pts.push([xR - w * 0.07, H - h * 0.05]);
-    pts.push([xR + w * 0.02, H + 2]);
-    p += smooth(pts);
-    x += w * (0.55 + r() * 0.5) + (r() < 0.3 ? r() * w * 1.4 : 0);
-  }
-  return p + `M0 ${H - 3}H${W}V${H + 2}H0Z`;
-}
-function karstSvg(seed, n, minH, maxH, fill, mist) {
-  const W = 1600, H = 520;
-  const id = `m${seed}`;
-  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">` +
-    (mist ? `<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${fill}" stop-opacity="${mist[0]}"/><stop offset="1" stop-color="${fill}" stop-opacity="${mist[1]}"/></linearGradient></defs>` : '') +
-    `<path d="${karstPath(seed, W, H, n, minH, maxH)}" fill="${mist ? `url(#${id})` : fill}"/></svg>`;
-}
-// Layers: [seed, towers, minH, maxH, colour, mist, speed]
-const HOME_LAYERS = [
-  [11, 9, 150, 360, '#E4E8E3', [0.2, 0], 0.34],
-  [23, 8, 120, 300, '#A9BBB4', [0.34, 0.06], 0.24],
-  [37, 7, 90, 250, '#3B5A53', [0.9, 0.55], 0.13],
-  [41, 6, 50, 190, '#17201E', [1, 0.96], 0.04],
-];
-const karstHome = () => `<div class="karst karst--home">${HOME_LAYERS.map((l) => `<div class="karst__layer" data-speed="${l[6]}">${karstSvg(l[0], l[1], l[2], l[3], l[4], l[5])}</div>`).join('')}</div>`;
-const karstPage = (seed) => `<div class="karst karst--page"><div class="karst__layer" data-speed="0.12">${karstSvg(seed, 8, 80, 260, '#1D1F1C', [0.15, 0.7])}</div></div>`;
 
 // ---------- images ----------
 function pic(slot, alt, { sizes = '100vw', eager = false, cls = '', ratio, high = false } = {}) {
@@ -360,7 +300,6 @@ function homePage(L, c) {
   const body = `
 <section class="hero" aria-labelledby="hero-h">
   <div class="hero__media" data-speed="0.42">${pic('home-hero', alt(c, 'home-hero'), { eager: true, high: true })}</div>
-  ${karstHome()}
   ${heroLines(6)}
   <div class="hero__copy"><p class="eyebrow">${ICON.lotus}${esc(h.heroEyebrow)}</p><h1 class="hero__title" id="hero-h">${esc(h.heroTitle)}</h1><a class="btn hero__cta-m" href="${u(L, '/enquire/')}">${esc(h.heroCta)} ${ICON.ar}</a></div>
   <aside class="hero__card"><div class="row mono"><span>${esc(c.dest.halong.name)}</span><span>01 / 12</span></div><div class="bar"><i></i></div><p>${esc(h.heroCard)}</p><div class="row mono" style="border:0"><span>20°48'N 107°05'E</span></div><a class="btn" href="${u(L, '/enquire/')}">${esc(h.heroCta)} ${ICON.ar}</a></aside>
@@ -448,7 +387,6 @@ function destPage(L, c, d, i) {
   const body = `
 <section class="phero" aria-labelledby="ph-h">
   <div class="hero__media" data-speed="0.35">${pic(imgs[0], alt(c, imgs[0]), { eager: true, high: true })}</div>
-  ${karstPage(100 + i * 7)}
   ${heroLines(6)}
   <div class="phero__copy"><p class="eyebrow">${ICON.lotus}${esc(t.region)}</p><h1 class="sr" id="ph-h">${esc(t.name)}</h1><p>${esc(t.lede)}</p></div>
   <p class="hero__meta mono">${String(i + 1).padStart(2, '0')} / 12 · ${d.coords}</p>
@@ -610,7 +548,7 @@ function creditsPage(L, c) {
 }
 function notFoundPage(L, c) {
   const t = c.notFound;
-  const body = `<section class="hero" style="height:auto;min-height:100svh"><div class="hero__media">${pic('halong-3', '', { eager: true })}</div>${karstHome()}<div class="hero__copy" style="position:relative;padding:calc(var(--hdr) + 15vh) 0 30vh;left:auto;right:auto;top:auto;margin:0 var(--g)"><p class="eyebrow">404</p><h1 class="h1">${t.title}</h1><p class="lede" style="margin-top:20px">${esc(t.text)}</p><p style="margin-top:24px;display:flex;gap:8px;flex-wrap:wrap">${cfg.locales.map((l) => `<a class="btn${l.code === L.code ? '' : ' btn--ghost'}" href="${u(l, '/')}" lang="${l.code}">${esc(C[l.code].notFound.back)}</a>`).join('')}</p></div></section>`;
+  const body = `<section class="hero" style="height:auto;min-height:100svh"><div class="hero__media">${pic('halong-3', '', { eager: true })}</div><div class="hero__copy" style="position:relative;padding:calc(var(--hdr) + 15vh) 0 30vh;left:auto;right:auto;top:auto;margin:0 var(--g)"><p class="eyebrow">404</p><h1 class="h1">${t.title}</h1><p class="lede" style="margin-top:20px">${esc(t.text)}</p><p style="margin-top:24px;display:flex;gap:8px;flex-wrap:wrap">${cfg.locales.map((l) => `<a class="btn${l.code === L.code ? '' : ' btn--ghost'}" href="${u(l, '/')}" lang="${l.code}">${esc(C[l.code].notFound.back)}</a>`).join('')}</p></div></section>`;
   return page(L, c, { path: '/404/', navPath: '/', meta: c.meta.notFound, body, cta: false, noindex: true });
 }
 
