@@ -36,7 +36,6 @@ const ICON = {
   arL: '<svg class="ar" viewBox="0 0 14 10" aria-hidden="true"><path d="M14 5H1.5M5.5 1l-4 4 4 4" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>',
   lotus: '<svg class="mk" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5c1.6 1.6 2.2 3.6 1.7 6.1-.3 1.3-1 2.4-1.7 3.1-.7-.7-1.4-1.8-1.7-3.1C5.8 6.1 6.4 4.1 8 2.5Z M2 6.5c2.3.2 4 1.3 5 3.4.4.8.6 1.6.7 2.3-1.7.1-3.6-.6-4.7-2.1C2.3 9.2 2 7.9 2 6.5Zm12 0c0 1.4-.3 2.7-1 3.6-1.1 1.5-3 2.2-4.7 2.1.1-.7.3-1.5.7-2.3 1-2.1 2.7-3.2 5-3.4ZM3 13.3h10" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>',
   hat: '<svg class="mk" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3 1.5 12.2h13L8 3Zm-4.8 9.2c1.4 1.1 3 1.6 4.8 1.6s3.4-.5 4.8-1.6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>',
-  strata: '<svg class="strata" viewBox="0 0 160 12" preserveAspectRatio="none" aria-hidden="true"><path d="M0 1.5h160M0 5h118M0 7.2h140M0 10.5h86" stroke="currentColor" stroke-width="1" fill="none"/></svg>',
 };
 
 
@@ -308,7 +307,7 @@ function homePage(L, c) {
 
 <section class="sec intro">
   <div class="wrap grid">
-    <div class="intro__label rv">${eyebrow(esc(h.introEyebrow))}${ICON.strata}</div>
+    <div class="intro__label rv">${eyebrow(esc(h.introEyebrow))}</div>
     <p class="intro__text stmt rv">${esc(h.intro)}</p>
     <div class="stats">${h.stats.map((s) => `<div class="stat rv"><b>${esc(s.n)}</b><span>${esc(s.t)}</span></div>`).join('')}</div>
   </div>
@@ -411,7 +410,7 @@ function destPage(L, c, d, i) {
 ${d.key === 'halong' ? baysChooser(L, c) : ''}
 ${d.key === 'phongnha' ? caveLadder(L, c) : ''}
 
-${staysHere.length ? `<section class="sec mist" aria-labelledby="sh-h"><div class="wrap ed ed--a">${staysHere.map((s) => { const st = c.stays[s.key]; return `<article class="ed__item"><div class="media rv-img">${pic(s.img, alt(c, s.img), { sizes: '(min-width:900px) 66vw, 100vw', ratio: 2 / 3 })}</div><div class="txt rv">${eyebrow(esc(ui.staysHere))}<h2 class="h2" id="sh-h" style="margin-bottom:10px">${esc(C.en.stays[s.key].name)}</h2><p class="mono muted" style="margin-bottom:14px">${esc(st.place)} · ${esc(st.kind)}</p><p>${esc(st.text)}</p><p class="ph-note">${esc(ui.placeholderNote)}</p><a class="lnk" href="${u(L, '/stays/')}">${esc(c.home.staysCta)} ${ICON.ar}</a></div></article>`; }).join('')}
+${staysHere.length ? `<section class="sec mist" aria-labelledby="sh-h"><div class="wrap ed ed--a">${staysHere.map((s) => { const st = c.stays[s.key]; return `<article class="ed__item"><div class="media rv-img">${pic(s.img, alt(c, s.img), { sizes: '(min-width:900px) 66vw, 100vw', ratio: 2 / 3 })}</div><div class="txt rv">${eyebrow(esc(ui.staysHere))}<h2 class="h2" id="sh-h" style="margin-bottom:10px">${esc(st.name)}</h2><p class="mono muted" style="margin-bottom:14px">${esc(st.place)} · ${esc(st.kind)}</p><p>${esc(st.text)}</p><a class="lnk" href="${u(L, '/stays/')}">${esc(c.home.staysCta)} ${ICON.ar}</a></div></article>`; }).join('')}
   <article class="ed__item"><div class="media rv-img">${pic(imgs[0], alt(c, imgs[0]), { sizes: '(min-width:900px) 33vw, 100vw', ratio: 1.25 })}</div></article></div></section>` : ''}
 
 <section class="sec" aria-labelledby="pr-h">
@@ -455,7 +454,7 @@ ${weatherStrip(L, c)}`;
 function staysPage(L, c) {
   const t = c.staysPage, ui = c.ui;
   const body = `<div class="phead phead--split"><div>${eyebrow(esc(t.eyebrow))}<h1 class="h1">${t.title}</h1></div><p class="lede muted">${esc(t.lede)}</p></div>
-<section class="wrap" style="padding-bottom:var(--space-m)"><div class="stays">${D.stays.map((s, i) => { const st = c.stays[s.key]; return `<article class="card rv"><div class="card__img">${pic(s.img, alt(c, s.img), { sizes: '(min-width:900px) 58vw, (min-width:600px) 50vw, 100vw', ratio: 1.25 })}<span class="card__num">${String(i + 1).padStart(2, '0')}</span></div><div class="card__meta"><p class="mono">${esc(st.place)}</p><h2 class="h3" style="font-size:clamp(1.375rem,2vw,1.875rem);margin-bottom:8px">${esc(C.en.stays[s.key].name)}</h2><p class="mono" style="margin-bottom:10px">${esc(st.kind)}</p><p>${esc(st.text)}</p><p class="ph-note">${esc(ui.placeholderNote)}</p><a class="lnk" href="${u(L, dpath(s.dest))}">${esc(c.dest[s.dest].name)} ${ICON.ar}</a></div></article>`; }).join('')}</div></section>
+<section class="wrap" style="padding-bottom:var(--space-m)"><div class="stays">${D.stays.map((s, i) => { const st = c.stays[s.key]; return `<article class="card rv"><div class="card__img">${pic(s.img, alt(c, s.img), { sizes: '(min-width:900px) 58vw, (min-width:600px) 50vw, 100vw', ratio: 1.25 })}<span class="card__num">${String(i + 1).padStart(2, '0')}</span></div><div class="card__meta"><p class="mono">${esc(st.place)}</p><h2 class="h3" style="font-size:clamp(1.375rem,2vw,1.875rem);margin-bottom:8px">${esc(st.name)}</h2><p class="mono" style="margin-bottom:10px">${esc(st.kind)}</p><p>${esc(st.text)}</p><a class="lnk" href="${u(L, dpath(s.dest))}">${esc(c.dest[s.dest].name)} ${ICON.ar}</a></div></article>`; }).join('')}</div></section>
 ${cta(L, c, 'ninhbinh-3')}`;
   return page(L, c, { path: '/stays/', meta: c.meta.stays, body, cta: false, ld: [crumbs(L, [[ui.home, '/'], [ui.navStays, '/stays/']])] });
 }
@@ -464,7 +463,7 @@ function aboutPage(L, c) {
   const a = c.about, ui = c.ui;
   const body = `<div class="phead phead--split"><div>${eyebrow(esc(a.eyebrow))}<h1 class="h1">${a.title}</h1></div><p class="lede muted">${esc(a.lede)}</p></div>
 <div class="rv-img" style="aspect-ratio:21/9;overflow:hidden;min-height:320px">${pic('about-1', alt(c, 'about-1'), { sizes: '100vw', ratio: 9 / 21 })}</div>
-<section class="sec"><div class="wrap grid"><div class="intro__label rv">${eyebrow(esc(a.storyTitle))}${ICON.strata}</div><div class="intro__text">${a.story.map((p, i) => `<p class="${i === 0 ? 'stmt' : 'lede'} rv" style="margin-bottom:1.2em">${esc(p)}</p>`).join('')}</div></div></section>
+<section class="sec"><div class="wrap grid"><div class="intro__label rv">${eyebrow(esc(a.storyTitle))}</div><div class="intro__text">${a.story.map((p, i) => `<p class="${i === 0 ? 'stmt' : 'lede'} rv" style="margin-bottom:1.2em">${esc(p)}</p>`).join('')}</div></div></section>
 <section class="sec dark"><div class="wrap"><div class="shead"><div>${eyebrow(esc(a.principlesTitle))}<h2 class="h2">${esc(a.principlesTitle)}</h2></div></div><div class="cols">${a.principles.map((p, i) => `<div class="rv"><p class="n mono">${String(i + 1).padStart(2, '0')}</p><h3>${esc(p.t)}</h3><p>${esc(p.p)}</p></div>`).join('')}</div></div></section>
 <section class="sec"><div class="wrap"><div class="shead"><div>${eyebrow(esc(a.processTitle))}<h2 class="h2">${esc(a.processTitle)}</h2></div></div><div class="cols">${a.process.map((p, i) => `<div class="rv"><p class="n mono">${String(i + 1).padStart(2, '0')}</p><h3>${esc(p.t)}</h3><p>${esc(p.p)}</p></div>`).join('')}</div></div></section>
 ${cta(L, c, 'halong-1')}`;
@@ -487,7 +486,7 @@ function articlePage(L, c, a, i) {
   const other = D.journal.filter((x) => x.key !== a.key);
   const body = `<div class="phead"><p class="eyebrow">${ICON.lotus}<a href="${u(L, '/journal/')}" style="text-decoration:none">${esc(ui.navJournal)}</a> · ${fmtDate(a.date, L)} · ${Math.max(2, Math.round(words / 200))} ${esc(ui.minRead)}</p><h1 class="h1">${esc(t.title)}</h1><p class="lede muted">${esc(t.dek)}</p></div>
 <div class="wrap"><div class="rv-img" style="aspect-ratio:16/9;overflow:hidden">${pic(a.img, alt(c, a.img), { sizes: '100vw', ratio: 9 / 16 })}</div></div>
-<section class="sec"><div class="wrap article"><div class="article__meta">${eyebrow(esc(ui.navJournal))}${ICON.strata}</div><div class="prose">${t.body.map((x) => `<p>${x}</p>`).join('')}<p style="margin-top:2em"><a class="lnk" href="${u(L, '/journal/')}" style="color:inherit">${ICON.arL} ${esc(ui.backToJournal)}</a></p></div></div></section>
+<section class="sec"><div class="wrap article"><div class="article__meta">${eyebrow(esc(ui.navJournal))}</div><div class="prose">${t.body.map((x) => `<p>${x}</p>`).join('')}<p style="margin-top:2em"><a class="lnk" href="${u(L, '/journal/')}" style="color:inherit">${ICON.arL} ${esc(ui.backToJournal)}</a></p></div></div></section>
 <section class="sec mist"><div class="wrap">${eyebrow(esc(ui.navJournal))}<div class="idx">${other.map((o, k) => { const ot = c.articles[o.key]; return `<a class="idx__row" href="${u(L, `/journal/${o.slug}/`)}"><span class="n mono">${String(k + 1).padStart(2, '0')}</span><span class="t">${esc(ot.title)}</span><span class="d">${esc(ot.dek)}</span><span class="go circle-ar">${ICON.ar}</span></a>`; }).join('')}</div></div></section>`;
   const ld = [crumbs(L, [[ui.home, '/'], [ui.navJournal, '/journal/'], [t.title, p]]), { '@context': 'https://schema.org', '@type': 'Article', headline: t.title, description: t.dek, datePublished: a.date, inLanguage: L.code, author: { '@type': 'Organization', name: cfg.brand.name }, publisher: { '@id': `${cfg.siteUrl}/#org` }, mainEntityOfPage: cfg.siteUrl + u(L, p), image: IMG[a.img] && IMG[a.img].og ? `${cfg.siteUrl}/assets/img/${IMG[a.img].og}` : undefined }];
   return page(L, c, { path: p, meta: { title: `${t.title} · ${cfg.brand.name}`, description: t.dek }, body, ogSlot: a.img, ld });

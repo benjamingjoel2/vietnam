@@ -43,7 +43,6 @@ module.exports = {
     nextPlace: `Next, heading south`,
     backToJournal: `Back to the journal`,
     minRead: `min read`,
-    placeholderNote: `Placeholder name. The property will be confirmed with your quote.`,
     months: [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`],
     monthsShort: [`Jan`, `Feb`, `Mar`, `Apr`, `May`, `Jun`, `Jul`, `Aug`, `Sep`, `Oct`, `Nov`, `Dec`],
     // footer
@@ -568,20 +567,20 @@ module.exports = {
   staysPage: {
     eyebrow: `Stays`,
     title: `Small places, <em>chosen one by one</em>`,
-    lede: `We look for a handful of things: quiet, good light, a kitchen that cooks the local food well, and an owner or manager who cares. The names below are placeholders while we confirm partner properties; your quote names the real places.`,
+    lede: `We look for a handful of things: quiet, good light, a kitchen that cooks the local food well, and an owner or manager who cares. Your quote names each place.`,
     filterAll: `All regions`,
   },
 
   stays: {
-    hanoi: { name: `The Lake House`, place: `Hanoi · Old Quarter edge`, kind: `Townhouse hotel, 12 rooms`, text: `A narrow French-era house a short walk from Hoan Kiem, with a roof terrace above the noise.` },
-    lanha: { name: `Slack Water`, place: `Lan Ha Bay`, kind: `Small boat, 5 cabins`, text: `A wooden boat that anchors in the quieter corners of Lan Ha, with kayaks on board and a cook from Cat Ba.` },
-    ninhbinh: { name: `Paddy House`, place: `Ninh Binh · near Tam Coc`, kind: `Garden bungalows, 8 rooms`, text: `Low bungalows in the rice with a view of the karst, bicycles at the door and a pool for hot afternoons.` },
-    sapa: { name: `Cloud Terrace`, place: `Sapa · Muong Hoa valley`, kind: `Mountain lodge, 10 rooms`, text: `Stone and timber rooms above the terraces, outside town, with a fire in the evenings.` },
-    phongnha: { name: `River Bend`, place: `Phong Nha · Son river`, kind: `Farm stay, 6 rooms`, text: `A farmhouse on the river in the Bong Lai valley, a short drive from the cave trailheads.` },
-    hue: { name: `Garden of the Perfume River`, place: `Hue · riverside`, kind: `Garden house, 7 rooms`, text: `A traditional garden house with a lotus pond, a boat ride from the citadel.` },
-    hoian: { name: `Lantern Fields`, place: `Hoi An · between town and beach`, kind: `Villa rooms, 14 rooms`, text: `Rooms around a courtyard in the rice fields, ten minutes by bicycle to the old town or the sea.` },
-    mekong: { name: `Coconut Water`, place: `The Mekong · Ben Tre`, kind: `Riverside lodge, 9 rooms`, text: `Wooden rooms on a river island, reached by boat, with orchards behind and the river in front.` },
-    phuquoc: { name: `West Light`, place: `Phu Quoc · north-west coast`, kind: `Beach villas, 16 villas`, text: `Simple villas on a quiet bay in the north of the island, away from the big resorts.` },
+    hanoi: { name: `A townhouse hotel on the edge of Hanoi's Old Quarter`, place: `Hanoi · Old Quarter edge`, kind: `Townhouse hotel, 12 rooms`, text: `A narrow French-era house a short walk from Hoan Kiem, with a roof terrace above the noise.` },
+    lanha: { name: `A small wooden boat in Lan Ha Bay`, place: `Lan Ha Bay`, kind: `Small boat, 5 cabins`, text: `A wooden boat that anchors in the quieter corners of Lan Ha, with kayaks on board and a cook from Cat Ba.` },
+    ninhbinh: { name: `Garden bungalows in the rice near Tam Coc`, place: `Ninh Binh · near Tam Coc`, kind: `Garden bungalows, 8 rooms`, text: `Low bungalows in the rice with a view of the karst, bicycles at the door and a pool for hot afternoons.` },
+    sapa: { name: `A mountain lodge above the Muong Hoa valley`, place: `Sapa · Muong Hoa valley`, kind: `Mountain lodge, 10 rooms`, text: `Stone and timber rooms above the terraces, outside town, with a fire in the evenings.` },
+    phongnha: { name: `A farm stay on the Son river`, place: `Phong Nha · Son river`, kind: `Farm stay, 6 rooms`, text: `A farmhouse on the river in the Bong Lai valley, a short drive from the cave trailheads.` },
+    hue: { name: `A garden house on the Perfume River`, place: `Hue · riverside`, kind: `Garden house, 7 rooms`, text: `A traditional garden house with a lotus pond, a boat ride from the citadel.` },
+    hoian: { name: `Courtyard rooms in the rice fields outside Hoi An`, place: `Hoi An · between town and beach`, kind: `Villa rooms, 14 rooms`, text: `Rooms around a courtyard in the rice fields, ten minutes by bicycle to the old town or the sea.` },
+    mekong: { name: `A riverside lodge on an island in Ben Tre`, place: `The Mekong · Ben Tre`, kind: `Riverside lodge, 9 rooms`, text: `Wooden rooms on a river island, reached by boat, with orchards behind and the river in front.` },
+    phuquoc: { name: `Beach villas on Phu Quoc's quiet north-west coast`, place: `Phu Quoc · north-west coast`, kind: `Beach villas, 16 villas`, text: `Simple villas on a quiet bay in the north of the island, away from the big resorts.` },
   },
 
   about: {

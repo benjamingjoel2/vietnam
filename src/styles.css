@@ -86,8 +86,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .rule { border: 0; border-top: 1px solid currentColor; opacity: .22; margin: 0; }
 .span-all { grid-column: 1 / -1; }
 
-/* strata: three uneven hairlines, like bedding planes in limestone */
-.strata { display: block; width: 100%; max-width: 160px; height: 12px; margin: 0 0 1.5rem; color: currentColor; opacity: .5; }
 
 /* ---------- buttons & links ---------- */
 .btn { display: inline-flex; align-items: center; gap: .6em; min-height: 44px; padding: 0 18px; border: 0; border-radius: 2px; background: var(--c-lacquer); color: #fff; font: 500 .875rem/1 var(--sans); letter-spacing: .01em; text-decoration: none; cursor: pointer; transition: background-color .3s var(--ease), color .3s var(--ease), transform .3s var(--ease); }
@@ -485,7 +483,6 @@ legend { padding: 0; margin-bottom: 10px; font: 500 var(--t-eyebrow)/1.4 var(--s
   .stays > :nth-child(3n+1) { grid-column: 1 / 8; } .stays > :nth-child(3n+1) .card__img { aspect-ratio: 3 / 2; }
   .stays > :nth-child(3n+2) { grid-column: 9 / -1; align-self: end; }
   .stays > :nth-child(3n) { grid-column: 3 / 8; } .stays > :nth-child(3n) .card__img { aspect-ratio: 4 / 3; } }
-.ph-note { font-size: .75rem; color: var(--c-karst); font-style: italic; }
 
 /* accordion (notes) */
 .acc { border-top: 1px solid rgba(29, 31, 28, .25); }

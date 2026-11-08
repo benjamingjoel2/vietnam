@@ -43,7 +43,6 @@ module.exports = {
     nextPlace: `Weiter nach Süden`,
     backToJournal: `Zurück zum Journal`,
     minRead: `Min. Lesezeit`,
-    placeholderNote: `Platzhaltername. Die Unterkunft wird mit Ihrem Angebot bestätigt.`,
     months: [`Januar`, `Februar`, `März`, `April`, `Mai`, `Juni`, `Juli`, `August`, `September`, `Oktober`, `November`, `Dezember`],
     monthsShort: [`Jan.`, `Feb.`, `März`, `Apr.`, `Mai`, `Juni`, `Juli`, `Aug.`, `Sept.`, `Okt.`, `Nov.`, `Dez.`],
     // footer
@@ -568,20 +567,20 @@ module.exports = {
   staysPage: {
     eyebrow: `Unterkünfte`,
     title: `Kleine Häuser, <em>einzeln ausgewählt</em>`,
-    lede: `Wir achten auf wenige Dinge: Ruhe, gutes Licht, eine Küche, die die regionalen Gerichte gut zubereitet, und Gastgeber, denen ihr Haus am Herzen liegt. Die Namen unten sind Platzhalter, solange wir Partnerunterkünfte bestätigen; Ihr Angebot nennt die tatsächlichen Häuser.`,
+    lede: `Wir achten auf wenige Dinge: Ruhe, gutes Licht, eine Küche, die die regionalen Gerichte gut zubereitet, und Gastgeber, denen ihr Haus am Herzen liegt. Ihr Angebot nennt jedes Haus.`,
     filterAll: `Alle Regionen`,
   },
 
   stays: {
-    hanoi: { name: `The Lake House`, place: `Hanoi · Rand der Altstadt`, kind: `Stadthaushotel, 12 Zimmer`, text: `Ein schmales Haus aus der französischen Kolonialzeit, wenige Gehminuten vom Hoan-Kiem-See, mit einer Dachterrasse über dem Lärm.` },
-    lanha: { name: `Slack Water`, place: `Lan-Ha-Bucht`, kind: `Kleines Boot, 5 Kabinen`, text: `Ein Holzboot, das in den ruhigeren Winkeln der Lan-Ha-Bucht ankert, mit Kajaks an Bord und einem Koch aus Cat Ba.` },
-    ninhbinh: { name: `Paddy House`, place: `Ninh Binh · nahe Tam Coc`, kind: `Gartenbungalows, 8 Zimmer`, text: `Niedrige Bungalows in den Reisfeldern mit Blick auf den Karst, Fahrräder vor der Tür und ein Pool für heiße Nachmittage.` },
-    sapa: { name: `Cloud Terrace`, place: `Sapa · Muong-Hoa-Tal`, kind: `Berglodge, 10 Zimmer`, text: `Zimmer aus Stein und Holz über den Terrassen, außerhalb des Ortes, mit einem Feuer am Abend.` },
-    phongnha: { name: `River Bend`, place: `Phong Nha · Son-Fluss`, kind: `Bauernhof, 6 Zimmer`, text: `Ein Bauernhaus am Fluss im Bong-Lai-Tal, eine kurze Fahrt von den Ausgangspunkten der Höhlentouren.` },
-    hue: { name: `Garden of the Perfume River`, place: `Hue · am Fluss`, kind: `Gartenhaus, 7 Zimmer`, text: `Ein traditionelles Gartenhaus mit Lotusteich, eine Bootsfahrt von der Zitadelle entfernt.` },
-    hoian: { name: `Lantern Fields`, place: `Hoi An · zwischen Stadt und Strand`, kind: `Villenzimmer, 14 Zimmer`, text: `Zimmer rund um einen Innenhof in den Reisfeldern, zehn Minuten mit dem Rad zur Altstadt oder ans Meer.` },
-    mekong: { name: `Coconut Water`, place: `Mekong-Delta · Ben Tre`, kind: `Lodge am Fluss, 9 Zimmer`, text: `Holzzimmer auf einer Flussinsel, per Boot erreichbar, mit Obstgärten dahinter und dem Fluss davor.` },
-    phuquoc: { name: `West Light`, place: `Phu Quoc · Nordwestküste`, kind: `Strandvillen, 16 Villen`, text: `Schlichte Villen an einer ruhigen Bucht im Norden der Insel, abseits der großen Resorts.` },
+    hanoi: { name: `Ein Stadthaushotel am Rand der Altstadt von Hanoi`, place: `Hanoi · Rand der Altstadt`, kind: `Stadthaushotel, 12 Zimmer`, text: `Ein schmales Haus aus der französischen Kolonialzeit, wenige Gehminuten vom Hoan-Kiem-See, mit einer Dachterrasse über dem Lärm.` },
+    lanha: { name: `Ein kleines Holzboot in der Lan-Ha-Bucht`, place: `Lan-Ha-Bucht`, kind: `Kleines Boot, 5 Kabinen`, text: `Ein Holzboot, das in den ruhigeren Winkeln der Lan-Ha-Bucht ankert, mit Kajaks an Bord und einem Koch aus Cat Ba.` },
+    ninhbinh: { name: `Gartenbungalows in den Reisfeldern bei Tam Coc`, place: `Ninh Binh · nahe Tam Coc`, kind: `Gartenbungalows, 8 Zimmer`, text: `Niedrige Bungalows in den Reisfeldern mit Blick auf den Karst, Fahrräder vor der Tür und ein Pool für heiße Nachmittage.` },
+    sapa: { name: `Eine Berglodge über dem Muong-Hoa-Tal`, place: `Sapa · Muong-Hoa-Tal`, kind: `Berglodge, 10 Zimmer`, text: `Zimmer aus Stein und Holz über den Terrassen, außerhalb des Ortes, mit einem Feuer am Abend.` },
+    phongnha: { name: `Ein Bauernhof am Son-Fluss`, place: `Phong Nha · Son-Fluss`, kind: `Bauernhof, 6 Zimmer`, text: `Ein Bauernhaus am Fluss im Bong-Lai-Tal, eine kurze Fahrt von den Ausgangspunkten der Höhlentouren.` },
+    hue: { name: `Ein Gartenhaus am Parfümfluss`, place: `Hue · am Fluss`, kind: `Gartenhaus, 7 Zimmer`, text: `Ein traditionelles Gartenhaus mit Lotusteich, eine Bootsfahrt von der Zitadelle entfernt.` },
+    hoian: { name: `Zimmer um einen Innenhof in den Reisfeldern bei Hoi An`, place: `Hoi An · zwischen Stadt und Strand`, kind: `Villenzimmer, 14 Zimmer`, text: `Zimmer rund um einen Innenhof in den Reisfeldern, zehn Minuten mit dem Rad zur Altstadt oder ans Meer.` },
+    mekong: { name: `Eine Lodge auf einer Flussinsel in Ben Tre`, place: `Mekong-Delta · Ben Tre`, kind: `Lodge am Fluss, 9 Zimmer`, text: `Holzzimmer auf einer Flussinsel, per Boot erreichbar, mit Obstgärten dahinter und dem Fluss davor.` },
+    phuquoc: { name: `Strandvillen an der ruhigen Nordwestküste von Phu Quoc`, place: `Phu Quoc · Nordwestküste`, kind: `Strandvillen, 16 Villen`, text: `Schlichte Villen an einer ruhigen Bucht im Norden der Insel, abseits der großen Resorts.` },
   },
 
   about: {
