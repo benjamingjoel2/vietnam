@@ -462,7 +462,7 @@ ${cta(L, c, 'ninhbinh-3')}`;
 function aboutPage(L, c) {
   const a = c.about, ui = c.ui;
   const body = `<div class="phead phead--split"><div>${eyebrow(esc(a.eyebrow))}<h1 class="h1">${a.title}</h1></div><p class="lede muted">${esc(a.lede)}</p></div>
-<div class="rv-img" style="aspect-ratio:21/9;overflow:hidden;min-height:320px">${pic('about-1', alt(c, 'about-1'), { sizes: '100vw', ratio: 9 / 21 })}</div>
+<div class="rv-img" style="width:100%;aspect-ratio:21/9;overflow:hidden;min-height:320px">${pic('about-1', alt(c, 'about-1'), { sizes: '100vw', ratio: 9 / 21, cls: 'fill' })}</div>
 <section class="sec"><div class="wrap grid"><div class="intro__label rv">${eyebrow(esc(a.storyTitle))}</div><div class="intro__text">${a.story.map((p, i) => `<p class="${i === 0 ? 'stmt' : 'lede'} rv" style="margin-bottom:1.2em">${esc(p)}</p>`).join('')}</div></div></section>
 <section class="sec dark"><div class="wrap"><div class="shead"><div>${eyebrow(esc(a.principlesTitle))}<h2 class="h2">${esc(a.principlesTitle)}</h2></div></div><div class="cols">${a.principles.map((p, i) => `<div class="rv"><p class="n mono">${String(i + 1).padStart(2, '0')}</p><h3>${esc(p.t)}</h3><p>${esc(p.p)}</p></div>`).join('')}</div></div></section>
 <section class="sec"><div class="wrap"><div class="shead"><div>${eyebrow(esc(a.processTitle))}<h2 class="h2">${esc(a.processTitle)}</h2></div></div><div class="cols">${a.process.map((p, i) => `<div class="rv"><p class="n mono">${String(i + 1).padStart(2, '0')}</p><h3>${esc(p.t)}</h3><p>${esc(p.p)}</p></div>`).join('')}</div></div></section>
