@@ -56,7 +56,7 @@ const journeys = [
   { key: 'south', route: ['hcmc', 'mekong', 'phuquoc'], nights: '9–11', months: [12, 1, 2, 3, 4], img: 'mekong-1' },
 ];
 
-// Stays: placeholder names until partner properties are confirmed.
+// Stays: described by place and type until partner properties are confirmed.
 const stays = [
   { key: 'hanoi', dest: 'hanoi', img: 'hanoi-2' },
   { key: 'lanha', dest: 'halong', img: 'halong-2' },

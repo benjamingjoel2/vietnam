@@ -43,7 +43,6 @@ module.exports = {
     nextPlace: `Ensuite, cap au sud`,
     backToJournal: `Retour au journal`,
     minRead: `min de lecture`,
-    placeholderNote: `Nom provisoire. L'établissement sera confirmé avec votre devis.`,
     months: [`janvier`, `février`, `mars`, `avril`, `mai`, `juin`, `juillet`, `août`, `septembre`, `octobre`, `novembre`, `décembre`],
     monthsShort: [`janv.`, `févr.`, `mars`, `avr.`, `mai`, `juin`, `juil.`, `août`, `sept.`, `oct.`, `nov.`, `déc.`],
     // footer
@@ -568,20 +567,20 @@ module.exports = {
   staysPage: {
     eyebrow: `Hébergements`,
     title: `De petites adresses, <em>choisies une à une</em>`,
-    lede: `Nous recherchons peu de choses : le calme, une belle lumière, une cuisine qui prépare bien les plats locaux, et un propriétaire ou un responsable qui s'en soucie. Les noms ci-dessous sont provisoires, le temps de confirmer nos établissements partenaires ; votre devis indiquera les adresses réelles.`,
+    lede: `Nous recherchons peu de choses : le calme, une belle lumière, une cuisine qui prépare bien les plats locaux, et un propriétaire ou un responsable qui s'en soucie. Votre devis indique chaque adresse.`,
     filterAll: `Toutes les régions`,
   },
 
   stays: {
-    hanoi: { name: `La Maison du Lac`, place: `Hanoi · en lisière du vieux quartier`, kind: `Hôtel particulier, 12 chambres`, text: `Une étroite maison de l'époque française, à quelques pas d'Hoan Kiem, avec un toit-terrasse au-dessus du bruit.` },
-    lanha: { name: `L'Étale`, place: `Baie de Lan Ha`, kind: `Petit bateau, 5 cabines`, text: `Un bateau en bois qui jette l'ancre dans les recoins les plus calmes de Lan Ha, avec des kayaks à bord et un cuisinier de Cat Ba.` },
-    ninhbinh: { name: `La Maison des Rizières`, place: `Ninh Binh · près de Tam Coc`, kind: `Bungalows dans un jardin, 8 chambres`, text: `Des bungalows bas au milieu des rizières, avec vue sur le karst, des vélos devant la porte et une piscine pour les après-midi chauds.` },
-    sapa: { name: `La Terrasse des Nuages`, place: `Sapa · vallée de Muong Hoa`, kind: `Lodge de montagne, 10 chambres`, text: `Des chambres de pierre et de bois au-dessus des terrasses, hors de la ville, avec un feu le soir.` },
-    phongnha: { name: `Le Méandre`, place: `Phong Nha · rivière Son`, kind: `Séjour à la ferme, 6 chambres`, text: `Une ferme au bord de la rivière dans la vallée de Bong Lai, à quelques minutes en voiture des départs de sentiers vers les grottes.` },
-    hue: { name: `Le Jardin de la rivière des Parfums`, place: `Hue · au bord de la rivière`, kind: `Maison-jardin, 7 chambres`, text: `Une maison-jardin traditionnelle avec un bassin de lotus, à une promenade en bateau de la citadelle.` },
-    hoian: { name: `Les Champs de lanternes`, place: `Hoi An · entre la ville et la plage`, kind: `Chambres de villa, 14 chambres`, text: `Des chambres autour d'une cour au milieu des rizières, à dix minutes à vélo de la vieille ville ou de la mer.` },
-    mekong: { name: `L'Eau de coco`, place: `Le Mékong · Ben Tre`, kind: `Lodge au bord de l'eau, 9 chambres`, text: `Des chambres en bois sur une île du fleuve, accessibles en bateau, avec des vergers derrière et le fleuve devant.` },
-    phuquoc: { name: `Lumière d'Ouest`, place: `Phu Quoc · côte nord-ouest`, kind: `Villas de plage, 16 villas`, text: `Des villas simples sur une baie tranquille du nord de l'île, loin des grands complexes hôteliers.` },
+    hanoi: { name: `Un hôtel particulier en lisière du vieux quartier de Hanoi`, place: `Hanoi · en lisière du vieux quartier`, kind: `Hôtel particulier, 12 chambres`, text: `Une étroite maison de l'époque française, à quelques pas d'Hoan Kiem, avec un toit-terrasse au-dessus du bruit.` },
+    lanha: { name: `Un petit bateau en bois dans la baie de Lan Ha`, place: `Baie de Lan Ha`, kind: `Petit bateau, 5 cabines`, text: `Un bateau en bois qui jette l'ancre dans les recoins les plus calmes de Lan Ha, avec des kayaks à bord et un cuisinier de Cat Ba.` },
+    ninhbinh: { name: `Des bungalows dans les rizières près de Tam Coc`, place: `Ninh Binh · près de Tam Coc`, kind: `Bungalows dans un jardin, 8 chambres`, text: `Des bungalows bas au milieu des rizières, avec vue sur le karst, des vélos devant la porte et une piscine pour les après-midi chauds.` },
+    sapa: { name: `Un lodge de montagne au-dessus de la vallée de Muong Hoa`, place: `Sapa · vallée de Muong Hoa`, kind: `Lodge de montagne, 10 chambres`, text: `Des chambres de pierre et de bois au-dessus des terrasses, hors de la ville, avec un feu le soir.` },
+    phongnha: { name: `Une ferme au bord de la rivière Son`, place: `Phong Nha · rivière Son`, kind: `Séjour à la ferme, 6 chambres`, text: `Une ferme au bord de la rivière dans la vallée de Bong Lai, à quelques minutes en voiture des départs de sentiers vers les grottes.` },
+    hue: { name: `Une maison-jardin au bord de la rivière des Parfums`, place: `Hue · au bord de la rivière`, kind: `Maison-jardin, 7 chambres`, text: `Une maison-jardin traditionnelle avec un bassin de lotus, à une promenade en bateau de la citadelle.` },
+    hoian: { name: `Des chambres autour d'une cour dans les rizières d'Hoi An`, place: `Hoi An · entre la ville et la plage`, kind: `Chambres de villa, 14 chambres`, text: `Des chambres autour d'une cour au milieu des rizières, à dix minutes à vélo de la vieille ville ou de la mer.` },
+    mekong: { name: `Un lodge sur une île du fleuve à Ben Tre`, place: `Le Mékong · Ben Tre`, kind: `Lodge au bord de l'eau, 9 chambres`, text: `Des chambres en bois sur une île du fleuve, accessibles en bateau, avec des vergers derrière et le fleuve devant.` },
+    phuquoc: { name: `Des villas de plage sur la côte nord-ouest de Phu Quoc`, place: `Phu Quoc · côte nord-ouest`, kind: `Villas de plage, 16 villas`, text: `Des villas simples sur une baie tranquille du nord de l'île, loin des grands complexes hôteliers.` },
   },
 
   about: {
