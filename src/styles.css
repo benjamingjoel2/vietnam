@@ -44,6 +44,7 @@ img { height: auto; }
 picture { display: block; }
 .media { display: block; }
 picture.fill, .media picture, .card__img picture { width: 100%; height: 100%; }
+picture.fill img { width: 100%; height: 100%; object-fit: cover; }
 a { color: inherit; }
 button, input, select, textarea { font: inherit; color: inherit; }
 h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; margin: 0; letter-spacing: -.012em; text-wrap: balance; }
