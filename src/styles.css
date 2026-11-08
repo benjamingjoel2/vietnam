@@ -198,13 +198,6 @@ body.menu-open { overflow: hidden; }
 }
 @media (min-width: 900px) { .hero__cta-m { display: none; } }
 
-/* karst parallax layers */
-.karst { position: absolute; left: 0; right: 0; bottom: 0; z-index: -2; pointer-events: none; }
-.karst svg { width: 100%; height: auto; }
-.karst__layer { position: absolute; left: -2%; right: -2%; bottom: 0; will-change: transform; }
-.karst__layer svg { width: 100%; height: auto; display: block; }
-.karst--home { height: 62%; }
-.karst--page { height: 26%; z-index: 0; }
 
 
 /* page hero (destinations) */
